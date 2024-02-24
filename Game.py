@@ -1,7 +1,6 @@
 import pygame
 import random
 import os
-import time
 import neat
 
 
@@ -174,7 +173,7 @@ def eval_bird(genomes, config):
     run = True
     clock = pygame.time.Clock()
     while run:
-        clock.tick(30)
+        clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -269,8 +268,7 @@ def run(config_file):
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
-    # 50 generations
-    winner = p.run(eval_bird, 50)
+    winner = p.run(eval_bird)
 
 if __name__ == "__main__":
     local_dir = os.path.dirname(__file__)
